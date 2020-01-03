@@ -1,5 +1,5 @@
 package com.gp.model;
 
-public enum Requirement {
+public enum RequirementType {
     ID, TERMS_OF_USE, INFO, PHOTO, ADDRESS, FIRM, PROCESS
 }

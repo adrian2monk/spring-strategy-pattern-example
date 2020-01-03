@@ -23,6 +23,8 @@ public class Data {
 
     private double limitCredit;
 
+    private String documentNumber;
+
     public Long getId() {
         return id;
     }
