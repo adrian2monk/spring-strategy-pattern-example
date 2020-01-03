@@ -1,8 +1,8 @@
 package com.gp.controllers;
 
 import com.gp.model.Data;
-import com.gp.model.DocumentType;
-import com.gp.service.KycService;
+import com.gp.model.Document;
+import com.gp.service.Kyc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.List;
 public class KycController {
 
     @Autowired
-    private KycService userService;
+    private Kyc userService;
 
     @RequestMapping("/")
     @ResponseBody
@@ -48,7 +48,7 @@ public class KycController {
 
     @RequestMapping(value = "/change_type", method = RequestMethod.POST)
     public ResponseEntity<Data> changeType(@RequestParam(value = "id") long id,
-                                           @RequestParam(value = "type") DocumentType type) {
+                                           @RequestParam(value = "type") Document type) {
         Data userCreated = userService.changeType(id, type);
         return new ResponseEntity(userCreated, HttpStatus.CREATED);
     }

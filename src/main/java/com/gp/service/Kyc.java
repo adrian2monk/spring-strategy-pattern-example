@@ -1,7 +1,7 @@
 package com.gp.service;
 
 import com.gp.model.Data;
-import com.gp.model.DocumentType;
+import com.gp.model.Document;
 import com.gp.repository.DataRepository;
 import com.gp.strategies.Strategy;
 import com.gp.strategies.StrategyFactory;
@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class KycService {
+public class Kyc {
 
     private final StrategyFactory strategyFactory;
     private final DataRepository repository;
 
     @Autowired
-    public KycService(DataRepository repository, StrategyFactory strategyFactory) {
+    public Kyc(DataRepository repository, StrategyFactory strategyFactory) {
         this.repository = repository;
         this.strategyFactory = strategyFactory;
     }
@@ -35,13 +35,13 @@ public class KycService {
     }
 
     public Data create(Data user) {
-        Strategy strategy = strategyFactory.getStrategy(DocumentType.NORMAL);
+        Strategy strategy = strategyFactory.getStrategy(Document.NORMAL);
         strategy.changeLimit(user);
         return repository.save(user);
     }
 
 
-    public Data changeType(long id, DocumentType type) {
+    public Data changeType(long id, Document type) {
         Strategy strategy = strategyFactory.getStrategy(type);
         Data user = repository.findById(id).orElse(null);
         strategy.changeLimit(user);

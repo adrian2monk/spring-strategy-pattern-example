@@ -1,5 +1,5 @@
 package com.gp.model;
 
-public enum DocumentType {
+public enum Document {
     NORMAL, FULL, GOLD;
 }

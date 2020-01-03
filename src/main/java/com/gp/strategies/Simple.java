@@ -2,18 +2,19 @@ package com.gp.strategies;
 
 
 import com.gp.model.Data;
-import com.gp.model.CountryType;
-import com.gp.model.DocumentType;
+import com.gp.model.Country;
+import com.gp.model.Document;
+import com.gp.requirements.Requirement;
 
 import java.util.*;
 
-public class StrategySingle implements Strategy {
+public class Simple implements Strategy {
 
     private List<Requirement> requirements = new LinkedList<>();
-    private Map<DocumentType, Requirement> checks = new EnumMap<>(DocumentType.class);
+    private Map<Document, Requirement> checks = new EnumMap<>(Document.class);
 
     @Override
-    public String[] checklist(CountryType country, Long userId) {
+    public String[] checklist(Country country, Long userId) {
         Queue<String> list = new LinkedList<>();
         requirements.forEach(requirement -> {
             if (requirement.required(country) && !requirement.done(country)) {

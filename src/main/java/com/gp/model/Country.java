@@ -1,5 +1,5 @@
 package com.gp.model;
 
-public enum CountryType {
+public enum Country {
     MX, PE
 }

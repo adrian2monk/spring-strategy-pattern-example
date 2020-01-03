@@ -19,7 +19,7 @@ public class Data {
     @NotNull
     private String lastName;
 
-    private DocumentType document;
+    private Document document;
 
     private double limitCredit;
 
@@ -47,11 +47,11 @@ public class Data {
         this.lastName = lastName;
     }
 
-    public DocumentType getDocument() {
+    public Document getDocument() {
         return document;
     }
 
-    public void setDocument(DocumentType document) {
+    public void setDocument(Document document) {
         this.document = document;
     }
 
