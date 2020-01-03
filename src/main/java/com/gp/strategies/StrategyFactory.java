@@ -1,6 +1,6 @@
 package com.gp.strategies;
 
-import com.gp.model.UserType;
+import com.gp.model.CountryType;
 import org.springframework.stereotype.Component;
 
 import java.util.EnumMap;
@@ -9,23 +9,23 @@ import java.util.Map;
 @Component
 public class StrategyFactory {
 
-    private Map<UserType, Strategy> strategies = new EnumMap<>(UserType.class);
+    private Map<CountryType, Strategy> strategies = new EnumMap<>(CountryType.class);
 
     public StrategyFactory() {
         initStrategies();
     }
 
-    public Strategy getStrategy(UserType userType) {
-        if (userType == null || !strategies.containsKey(userType)) {
-            throw new IllegalArgumentException("Invalid " + userType);
+    public Strategy getStrategy(CountryType country) {
+        if (country == null || !strategies.containsKey(country)) {
+            // Fallback default to MX
+            return strategies.get(CountryType.MX);
         }
-        return strategies.get(userType);
+        return strategies.get(country);
     }
 
     private void initStrategies() {
-        strategies.put(UserType.NORMAL, new StrategyOperationNormal());
-        strategies.put(UserType.FULL, new StrategyOperationFull());
-        strategies.put(UserType.GOLD, new StrategyOperationGold());
+        strategies.put(CountryType.MX, new StrategySingle());
+        strategies.put(CountryType.PE, new StrategySingle());
     }
 
 }

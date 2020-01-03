@@ -1,9 +1,12 @@
 package com.gp.strategies;
 
-import com.gp.model.User;
+import com.gp.model.CountryType;
+import com.gp.model.Data;
 
 public interface Strategy {
 
-    void changeLimit(User user);
+    String[] checklist(CountryType country, Long userId);
 
+    void run(Data user);
+    void process(Data user);
 }
