@@ -45,7 +45,7 @@ public class KycController {
         Data userCreated = userService.create(user);
         return new ResponseEntity(userCreated, HttpStatus.CREATED);
     }
-
+//SDASDAS
     @RequestMapping(value = "/change_type", method = RequestMethod.POST)
     public ResponseEntity<Data> changeType(@RequestParam(value = "id") long id,
                                            @RequestParam(value = "type") Document type) {
