@@ -12,5 +12,5 @@ public interface Requirement {
 
     boolean validate(Data input);
     boolean required(Country country);
-    boolean done(Country country);
+    boolean done(Country country,long userId);
 }

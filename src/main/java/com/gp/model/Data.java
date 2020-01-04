@@ -21,16 +21,10 @@ public class Data {
 
     private Document document;
 
-    private double limitCredit;
-
     private String documentNumber;
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(long userId) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -57,11 +51,16 @@ public class Data {
         this.document = document;
     }
 
-    public double getLimitCredit() {
-        return limitCredit;
-    }
+	public String getDocumentNumber() {
+		return documentNumber;
+	}
 
-    public void setLimitCredit(double limitCredit) {
-        this.limitCredit = limitCredit;
-    }
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+    
 }

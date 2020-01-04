@@ -1,5 +1,6 @@
 package com.gp.service;
 
+import com.gp.model.Country;
 import com.gp.model.Data;
 import com.gp.model.Document;
 import com.gp.repository.DataRepository;
@@ -23,29 +24,9 @@ public class Kyc {
         this.strategyFactory = strategyFactory;
     }
 
-    public Data get(long userId) {
-        return repository.findById(userId).orElse(null);
+    public String[] list(Country country,long rppUserId) {
+    	
+      Strategy strategy = strategyFactory.getStrategy(country);
+    	return strategy.checklist(country, rppUserId);
     }
-
-    public List<Data> list() {
-        Iterable<Data> users = repository.findAll();
-        List<Data> list = new ArrayList<>();
-        users.forEach(list::add);
-        return list;
-    }
-
-    public Data create(Data user) {
-        Strategy strategy = strategyFactory.getStrategy(Document.NORMAL);
-        strategy.changeLimit(user);
-        return repository.save(user);
-    }
-
-
-    public Data changeType(long id, Document type) {
-        Strategy strategy = strategyFactory.getStrategy(type);
-        Data user = repository.findById(id).orElse(null);
-        strategy.changeLimit(user);
-        return repository.save(user);
-    }
-
 }
