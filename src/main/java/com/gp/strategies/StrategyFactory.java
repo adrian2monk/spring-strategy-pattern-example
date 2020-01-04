@@ -20,6 +20,9 @@ public class StrategyFactory {
             // Fallback default to MX
             return strategies.get(Country.MX);
         }
+        
+        // consultar qué servicios son requeridos para país
+        
         return strategies.get(country);
     }
 

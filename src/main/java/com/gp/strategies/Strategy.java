@@ -5,8 +5,8 @@ import com.gp.model.Data;
 
 public interface Strategy {
 
-    String[] checklist(Country country, Long userId);
-
     void run(Data user);
     void process(Data user);
+
+	String[] checklist(Country country, Long userId, String transaction);
 }

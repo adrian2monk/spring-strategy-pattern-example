@@ -24,9 +24,8 @@ public class Kyc {
         this.strategyFactory = strategyFactory;
     }
 
-    public String[] list(Country country,long rppUserId) {
-    	
+    public String[] list(Country country,long rppUserId, String transaction) {
       Strategy strategy = strategyFactory.getStrategy(country);
-    	return strategy.checklist(country, rppUserId);
+    	return strategy.checklist(country, rppUserId, transaction);
     }
 }
