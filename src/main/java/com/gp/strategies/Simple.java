@@ -43,7 +43,7 @@ public class Simple implements Strategy {
 		
 			switch (operation) {
 			case "selfie":
-				if(selfieRequirement.validate(data, country));{
+				if(selfieRequirement.validate(data, country)){
 					selfieRequirement.execute(country, rppUserId, data);
 				}
 				return true;
