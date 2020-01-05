@@ -4,6 +4,7 @@ package com.gp.strategies;
 import com.gp.model.Data;
 import com.gp.model.Country;
 import com.gp.model.Document;
+import com.gp.model.SelfieMxValidate;
 import com.gp.requirements.IdentificationRequirement;
 import com.gp.requirements.Requirement;
 import com.gp.requirements.SelfieRequirement;
@@ -36,25 +37,27 @@ public class Simple implements Strategy {
         });
         return list.toArray(new String[list.size()]);
     }
-
-    @Override
-    public void process(Data user) {
-
-    }
-
+    
 	@Override
 	public boolean run(Country country, long rppUserId, Object data, String operation) {
 		
 			switch (operation) {
 			case "selfie":
-				selfieRequirement.validate(data, country);
-				break;
-
+				if(selfieRequirement.validate(data, country));{
+					selfieRequirement.execute(country, rppUserId, data);
+				}
+				return true;
 			default:
-				break;
+				return false;	
 			}
-    		return true;
 
+	}
+
+	@Override
+	public void process(Country country, long rppUserId, Object data) {
+		
+		//validate selfie response if all is ok continue
+		selfieRequirement.validate(data, country);
 	}
 
 

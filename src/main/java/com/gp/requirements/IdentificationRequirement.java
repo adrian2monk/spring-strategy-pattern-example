@@ -20,7 +20,7 @@ public class IdentificationRequirement implements Requirement {
     }
 
     @Override
-    public void execute(Country country) {
+    public void execute(Country country,long rppUserId,Object data) {
     	//Pass the scan reference to jumio-ms
     }
     

@@ -3,7 +3,6 @@ package com.gp.controllers;
 import com.gp.dto.SelfieMxRequestDto;
 import com.gp.model.Country;
 import com.gp.model.Data;
-import com.gp.model.Document;
 import com.gp.service.Kyc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
