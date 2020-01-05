@@ -29,4 +29,9 @@ public class Kyc {
       Strategy strategy = strategyFactory.getStrategy(country);
     	return strategy.checklist(country, rppUserId);
     }
+    public boolean selfie(Country country,long rppUserId,Object data) {
+    	
+        Strategy strategy = strategyFactory.getStrategy(country);
+      	return strategy.run(country, rppUserId, data,"selfie");
+      }
 }

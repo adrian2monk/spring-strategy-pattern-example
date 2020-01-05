@@ -7,6 +7,6 @@ public interface Strategy {
 
     String[] checklist(Country country, Long userId);
 
-    void run(Data user);
+    boolean run(Country country, long rppUserId,Object data,String operation);
     void process(Data user);
 }

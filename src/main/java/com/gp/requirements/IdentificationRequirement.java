@@ -23,12 +23,8 @@ public class IdentificationRequirement implements Requirement {
     public void execute(Country country) {
     	//Pass the scan reference to jumio-ms
     }
-
-    @Override
-    public boolean validate(Data input) {
-    	//validate the execute conection
-        return false;
-    }
+    
+    
 
     @Override
     public boolean required(Country country) {
@@ -49,4 +45,14 @@ public class IdentificationRequirement implements Requirement {
     	}
     	return false;
     }
+
+	@Override
+	public boolean validate(Object input, Country country) {
+		
+		//Verify information 
+		if (Country.MX==country) {
+    		return true;
+		}
+    	return false;
+	}
 }

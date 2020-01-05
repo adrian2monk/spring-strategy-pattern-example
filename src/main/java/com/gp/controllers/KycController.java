@@ -1,5 +1,6 @@
 package com.gp.controllers;
 
+import com.gp.dto.SelfieMxRequestDto;
 import com.gp.model.Country;
 import com.gp.model.Data;
 import com.gp.model.Document;
@@ -32,6 +33,13 @@ public class KycController {
 			@RequestHeader("country") Country country) {
         String[] requirements = kycService.list(country,userId);
         return new ResponseEntity(requirements, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/jumio", method = RequestMethod.POST)
+    public ResponseEntity<Data> selfieJumio(@RequestParam() long rppUserId,
+			@RequestHeader("country") Country country,@RequestBody SelfieMxRequestDto data) {
+        boolean dataIsOk = kycService.selfie(country, rppUserId,data);
+        return new ResponseEntity(dataIsOk, HttpStatus.OK);
     }
 
 

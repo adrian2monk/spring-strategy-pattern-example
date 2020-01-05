@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gp.dto.SelfieMxValidate;
 import com.gp.model.Country;
 import com.gp.model.Data;
 import com.gp.model.RequirementType;
@@ -13,6 +14,9 @@ public class SelfieRequirement implements Requirement {
 
 	@Autowired
 	DataIdentification dataIdentification;
+	
+	@Autowired
+	SelfieMxValidate selfieMxValidate;
 	
 	@Override
 	public RequirementType kind() {
@@ -25,13 +29,8 @@ public class SelfieRequirement implements Requirement {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public boolean validate(Data input) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
+	
 	@Override
 	public boolean required(Country country) {
 		if (Country.MX==country) {
@@ -48,6 +47,18 @@ public class SelfieRequirement implements Requirement {
         	return true;
     	}
     	return false;
+	}
+
+	@Override
+	public boolean validate(Object input, Country country) {
+		// TODO Auto-generated method stub
+		
+		if (Country.MX==country) {
+			if(input.equals(selfieMxValidate)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

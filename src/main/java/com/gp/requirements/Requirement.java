@@ -7,10 +7,8 @@ import com.gp.model.RequirementType;
 public interface Requirement {
 
     RequirementType kind();
-
     void execute(Country country);
-
-    boolean validate(Data input);
+    boolean validate(Object input,Country country);
     boolean required(Country country);
     boolean done(Country country,long userId);
 }

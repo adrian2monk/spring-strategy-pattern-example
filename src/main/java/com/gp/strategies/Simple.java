@@ -6,16 +6,24 @@ import com.gp.model.Country;
 import com.gp.model.Document;
 import com.gp.requirements.IdentificationRequirement;
 import com.gp.requirements.Requirement;
+import com.gp.requirements.SelfieRequirement;
 
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 public class Simple implements Strategy {
 
-    private List<Requirement> requirements = new LinkedList<>();
+	@Autowired
+	SelfieRequirement selfieRequirement;
+    
+	private List<Requirement> requirements = new LinkedList<>();
     private Map<Document, Requirement> checks = new EnumMap<>(Document.class);
     
     public Simple() {
     	this.requirements.add(new IdentificationRequirement());
+    	this.requirements.add(new SelfieRequirement());
 	}
     
     @Override
@@ -30,13 +38,24 @@ public class Simple implements Strategy {
     }
 
     @Override
-    public void run(Data user) {
-
-    }
-
-    @Override
     public void process(Data user) {
 
     }
+
+	@Override
+	public boolean run(Country country, long rppUserId, Object data, String operation) {
+		
+			switch (operation) {
+			case "selfie":
+				selfieRequirement.validate(data, country);
+				break;
+
+			default:
+				break;
+			}
+    		return true;
+
+	}
+
 
 }
