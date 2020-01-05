@@ -6,6 +6,7 @@ import com.gp.model.Country;
 import com.gp.model.Document;
 import com.gp.model.SelfieMxValidate;
 import com.gp.requirements.IdentificationRequirement;
+import com.gp.requirements.RenapoRequirement;
 import com.gp.requirements.Requirement;
 import com.gp.requirements.SelfieRequirement;
 
@@ -18,6 +19,9 @@ public class Simple implements Strategy {
 
 	@Autowired
 	SelfieRequirement selfieRequirement;
+	
+	@Autowired
+	RenapoRequirement renapoRequirement;
     
 	private List<Requirement> requirements = new LinkedList<>();
     private Map<Document, Requirement> checks = new EnumMap<>(Document.class);
@@ -56,8 +60,12 @@ public class Simple implements Strategy {
 	@Override
 	public void process(Country country, long rppUserId, Object data) {
 		
-		//validate selfie response if all is ok continue
-		selfieRequirement.validate(data, country);
+		//validate jumio response response if all is ok continue
+		if(selfieRequirement.validate(data, country)) {
+			//find before in database if is required
+			renapoRequirement.execute(country, rppUserId, data);
+		}
+		
 	}
 
 
