@@ -27,7 +27,7 @@ public class Simple implements Strategy {
 	}
     
     @Override
-    public String[] checklist(Country country, Long userId) {
+    public String[] checklist(Country country, Long userId, String transaction) {
         Queue<String> list = new LinkedList<>();
         requirements.forEach(requirement -> {
             if (requirement.required(country) && !requirement.done(country,userId)) {

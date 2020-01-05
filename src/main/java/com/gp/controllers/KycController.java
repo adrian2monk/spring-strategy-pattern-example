@@ -30,8 +30,8 @@ public class KycController {
 
     @RequestMapping(value = "/requirements", method = RequestMethod.GET)
     public ResponseEntity<Data> list(@RequestParam() long userId,
-			@RequestHeader("country") Country country) {
-        String[] requirements = kycService.list(country,userId);
+			@RequestHeader("country") Country country, @RequestHeader("transaction") String transaction) {
+        String[] requirements = kycService.list(country,userId,transaction);
         return new ResponseEntity(requirements, HttpStatus.OK);
     }
     
